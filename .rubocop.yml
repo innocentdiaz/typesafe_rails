@@ -1,0 +1,61 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 160
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - lib/s1/measurable.rb   # class_methods do … end
+
+# The noul DSL takes `true:` / `false:` clarification kwargs by design.
+Lint/BooleanSymbol:
+  Exclude:
+    - spec/**/*
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - spec/**/*
+
+# Delegators: `**kw` is the whole point.
+Naming/MethodParameterName:
+  AllowedNames: [kw, id, a, q, e, s, as]
+
+# Conventional gem entry shim (`require "s1-rails"`).
+Naming/FileName:
+  Exclude:
+    - lib/s1-rails.rb
+
+Metrics/ModuleLength:
+  Exclude:
+    - lib/s1/measurable.rb   # the concern: class macros + the record verbs in one place
